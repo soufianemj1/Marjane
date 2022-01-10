@@ -43,6 +43,7 @@ const deleteAc = document.getElementById('ACdata');
 deleteAc.addEventListener('click', (e) => {
     if (e.target.classList.contains('deletebtn')) {
         const Caid = e.target.id;
+        alert('are you sure ?')
         axios
         .delete(`http://localhost:8082/DeleteAdminCenter/${Caid}`)
         .then(window.location.reload())
@@ -94,4 +95,4 @@ function update(){
     })
     .catch(err=>console.log(err))
 }
-
+ 

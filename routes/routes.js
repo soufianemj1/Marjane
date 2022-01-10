@@ -36,6 +36,7 @@ module.exports = (app) => {
   app.get("/", (req, res) => {
     res.render("index");
   });
+
   app.get("/loginform",(req,res)=>{
     res.render("login");
   });
@@ -47,6 +48,10 @@ module.exports = (app) => {
   app.get("/admincenterdashboard",(req,res)=>{
     res.render("admincentre");
   });
+
+  app.get("/promotiondash",(req,res)=>{
+    res.render("promotions")
+  })
 
 
 };
