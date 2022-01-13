@@ -22,10 +22,9 @@ class AdminRayon {
       firstName: admin_rayon.firstName,
       lastName: admin_rayon.lastName,
       email: admin_rayon.email,
-      id_admin_center: admin_rayon.id_admin_center,
       password: admin_rayon.password,
       rayon: admin_rayon.rayon,
-      token: admin_rayon.token,
+      
     });
   };
   static async update(RayonAdmin, id) {
@@ -34,7 +33,7 @@ class AdminRayon {
       lastName: RayonAdmin.lastName,
       email: RayonAdmin.email,
       password: RayonAdmin.password,
-      token: RayonAdmin.token,
+      
     });
   }
   static async destroy(id) {

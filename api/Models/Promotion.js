@@ -12,24 +12,18 @@ class Promotion {
   static async create(promotion) {
     con.query("INSERT INTO promotions SET ?", {
       promotion: promotion.promotion,
-      id_admin_center: promotion.id_admin_center,
-      id_rayon: promotion.id_rayon,
-      id_product: promotion.id_product,
-      loyalty_points: promotion.loyalty_points,
+      id_chef_rayon: promotion.id_rayon,
       date_promotion: promotion.date_promotion,
-      status: promotion.status,
+      status: promotion.status
     });
   }
 
   static async update(promotion, id) {
     con.query(`UPDATE promotions SET ? WHERE id =${id}`, {
       promotion: promotion.promotion,
-      id_admin_center: promotion.id_admin_center,
-      id_rayon: promotion.id_rayon,
-      loyalty_points: promotion.loyalty_points,
-      id_product: promotion.id_product,
+      id_chef_rayon: promotion.id_rayon,
       date_promotion: promotion.date_promotion,
-      status: promotion.status,
+      status: promotion.status
     });
   }
 

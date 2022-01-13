@@ -22,6 +22,7 @@ axios
 
 const acform = document.querySelector('.ac-form');
 acform.addEventListener('submit', (e) => {
+    
 
     const Cadmin = {
         firstName: acform.firstName.value,
@@ -30,6 +31,7 @@ acform.addEventListener('submit', (e) => {
         password: acform.password.value
         
     }
+    
     axios.post('http://localhost:8082/AdminCenter', Cadmin)
 
 
@@ -43,7 +45,7 @@ const deleteAc = document.getElementById('ACdata');
 deleteAc.addEventListener('click', (e) => {
     if (e.target.classList.contains('deletebtn')) {
         const Caid = e.target.id;
-        alert('are you sure ?')
+        confirm('are you sure ?')
         axios
         .delete(`http://localhost:8082/DeleteAdminCenter/${Caid}`)
         .then(window.location.reload())

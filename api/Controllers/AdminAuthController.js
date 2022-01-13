@@ -32,6 +32,7 @@ const login = async (req, res) => {
     const Admins = await Auth.findAllAdmins();
 
     const { email, password } = req.body;
+    console.log(req.body);
 
     // validate user creds
     if (!(email && password)) {
@@ -46,15 +47,15 @@ const login = async (req, res) => {
 
     if (Admin) {
       const token = jwt.sign(
-        { id: Admin.id },
+        { id: Admin.id, role:'admin' },
         `${process.env.JWT_SECRET_KEY}`,
         {
           expiresIn: "2h",
         }
       );
-      await Auth.update(token, Admin.id);
+      
 
-      res.status(200).json({ welcome: Admin });
+      res.status(200).json(token);
     }
     res.status(400).send("Invalid Credentials");
     // create token

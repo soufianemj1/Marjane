@@ -33,12 +33,12 @@ const getRayonAdminById = async (req, res) => {
 const createAdminRayon = async (req, res) => {
   try {
     // Get user input
-    const { firstName, lastName, email, password, id_admin_center, rayon } =
+    const { firstName, lastName, email, password, rayon } =
       req.body;
 
     // Validate user input
     if (!(email && password)) {
-      res.status(400).send("All input is required");
+      res.status(400).send("All inputs are required");
     }
 
     // check if user already exist
@@ -51,24 +51,23 @@ const createAdminRayon = async (req, res) => {
       return res.status(409).send("User Already Exist. Please Login");
     }
 
-    const token = jwt.sign(
-      {
-        email,
-      },
-      `${process.env.JWT_SECRET_KEY}`,
-      {
-        expiresIn: "2h",
-      }
-    );
+    // const token = jwt.sign(
+    //   {
+    //     email,
+    //   },
+    //   `${process.env.JWT_SECRET_KEY}`,
+    //   {
+    //     expiresIn: "2h",
+    //   }
+    // );
     // Create user in our database
     const admin = await RayonAdmin.createRayonAdmin({
       firstName,
       lastName,
-      id_admin_center,
-      rayon: rayon,
+      rayon,
       email: email.toLowerCase(), // sanitize: convert email to lowercase
       password: password,
-      token: token,
+    
     });
 
     // Create token

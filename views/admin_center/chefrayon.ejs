@@ -1,0 +1,134 @@
+<%- include('../partials/head') %>
+
+
+
+<body onload="affichageRAyon()">
+    
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">Marjan Promotions</div>
+            <div class="list-group list-group-flush my-3">
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-project-diagram me-2"></i>Overview</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-chart-line me-2"></i>graphes</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-paperclip me-2"></i>Admin centre</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-shopping-cart me-2"></i>Admin Rayon</a>
+                <a href="/promotiondash" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-gift me-2"></i>Promotions</a>
+               
+                <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                    <h2 class="fs-2 m-0">Dashboard</h2>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-2"></i>John Doe
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid px-4">
+                
+                
+                <form class="rayon-form">
+                    <div class="Rayonform">
+                        <div>
+                            <input name="firstName" class="firstName" type="text" placeholder="prenom">
+                        </div>
+                        <div>
+                            <input name="lastName" class="lastName" id type="text" placeholder="nom">
+                        </div>
+                        <div>
+                            <input name="password" class="password" id type="text" placeholder="password">
+                        </div>
+                        <div>
+                            <input name="rayon" class="rayon" id type="text" placeholder="rayon">
+                        </div>
+                        <div>
+                            <input name="email" class="email" type="text" placeholder="email">
+                            <input type="hidden" name="id" id="id" >
+                        </div>
+                        
+                        
+                    </div>
+                    <div class='rayonbutton'>
+                        <button type="submit" onclick="insertrayon()" class="btn btn-primary">Enregistrer</button>
+                        
+                    </div>
+                   
+                </form>
+<div class="rayonbutton"><button type="submit" onclick="updateRayon()" class="btn btn-primary">mettre a jour</button></div>
+                
+                <div class="row my-5">
+                    <h3 class="fs-4 mb-3">les chef rayon</h3>
+                    <div class="col">
+                        <table class="table bg-white rounded shadow-sm  table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Prenom</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">email</th>
+                                    <th scope="col">Mot de passe</th>
+                                    <th scope="col">rayon</th>
+                                    <th scope="col">Action</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody id="chefrayondata">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="../../public/admin_center/chefrayon.js"></script>
+</body>
+
+</html>

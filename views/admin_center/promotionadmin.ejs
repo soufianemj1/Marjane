@@ -1,4 +1,4 @@
-<%- include('partials/head') %>
+<%- include('../partials/head') %>
 
 
 
@@ -10,16 +10,18 @@
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-project-diagram me-2"></i>Overview</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-chart-line me-2"></i>graphes</a>
-                <a href="/admincenterdashboard" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-paperclip me-2"></i>Admin centre</a>
-               
-                <a href="promotiondash" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-shopping-cart me-2"></i>Admin Rayon</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-gift me-2"></i>Promotions</a>
                
-                <a onclick="logout()" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
@@ -58,7 +60,33 @@
         <div><H2>Liste des promotions</H2></div>
         <!-- table -->
         <div class="row my-5">
-            <h3 class="fs-4 mb-3">les Admin du centre</h3>
+            <form class="promotion-form">
+                <div class="promotionform">
+                    <div>
+                        <input name="promotion" class="promotion" type="text" placeholder="promotion">
+                    </div>
+                    <div>
+                        <input name="chefrayon  class="lastName" id type="text" placeholder="nom">
+                    </div>
+                    <div>
+                        <input name="password" class="password" id type="text" placeholder="password">
+                    </div>
+                    <div>
+                        <input name="chefrayon" class="chefrayon" id type="text" placeholder="chef rayon">
+                    </div>
+                    <div>
+                        <input name="email" class="email" type="text" placeholder="email">
+                        <input type="hidden" name="id" id="id" >
+                    </div>
+                    
+                    
+                </div>
+                <div class='rayonbutton'>
+                    <button type="submit" onclick="insertpromotion()" class="btn btn-primary">Enregistrer</button>
+                    
+                </div>
+               
+            </form>
             <div class="col">
                 <table class="table bg-white rounded shadow-sm  table-hover">
                     <thead>

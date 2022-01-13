@@ -2,7 +2,9 @@ module.exports = (app) => {
   const promotionController = require("../api/Controllers/PromotionController");
   const CAdminController = require("../api/Controllers/CAdminController");
   const RAdminController = require("../api/Controllers/RAdminController");
-  const Admin = require("../api/Controllers/AdminAuthController")
+  const Admin = require("../api/Controllers/AdminAuthController");
+  const {adminmiddleware} = require("../middleware/middleware");
+
 
   // admin 
   app.post("/login", Admin.login);
@@ -32,7 +34,7 @@ module.exports = (app) => {
   app.post("/validation/RA", RAdminController.EmailLogin);
   app.post("/login/RA", RAdminController.login);
 
-  // viewtest
+  // admin general view
   app.get("/", (req, res) => {
     res.render("index");
   });
@@ -41,16 +43,25 @@ module.exports = (app) => {
     res.render("login");
   });
 
-  app.get("/dashboard",(req,res)=>{
+  app.get("/dashboard",adminmiddleware,(req,res)=>{
     res.render("dashboard");
   });
 
-  app.get("/admincenterdashboard",(req,res)=>{
+  app.get("/admincenterdashboard",adminmiddleware,(req,res)=>{
     res.render("admincentre");
   });
 
-  app.get("/promotiondash",(req,res)=>{
+  app.get("/promotiondash",adminmiddleware,(req,res)=>{
     res.render("promotions")
+  })
+
+  // admin center view
+  app.get("/chefrayonadmin",(req,res)=>{
+    res.render("admin_center/chefrayon")
+  })
+  
+  app.get("/adminpromotion",(req,res)=>{
+    res.render("admin_center/promotionadmin")
   })
 
 
