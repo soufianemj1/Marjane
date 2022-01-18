@@ -12,18 +12,18 @@ class Promotion {
   static async create(promotion) {
     con.query("INSERT INTO promotions SET ?", {
       promotion: promotion.promotion,
-      id_chef_rayon: promotion.id_rayon,
+      id_chef_rayon: promotion.id_chef_rayon,
       date_promotion: promotion.date_promotion,
-      status: promotion.status
+      // status: promotion.status
     });
   }
 
   static async update(promotion, id) {
     con.query(`UPDATE promotions SET ? WHERE id =${id}`, {
       promotion: promotion.promotion,
-      id_chef_rayon: promotion.id_rayon,
+      id_chef_rayon: promotion.id_chef_rayon,
       date_promotion: promotion.date_promotion,
-      status: promotion.status
+      status: "Validated"
     });
   }
 

@@ -9,11 +9,8 @@
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">Marjan Promotions</div>
             <div class="list-group list-group-flush my-3">
                 
-                <a href="" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                    class="fas fa-gift me-2"></i>graphes</a>
-                <a href="chefrayonadmin" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-shopping-cart me-2"></i>Admin Rayon</a>
-                <a href="/adminpromotion" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-gift me-2"></i>Promotions</a>
                
                 <a onclick="logout()" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
@@ -36,55 +33,23 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>John De
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                
             </nav>
         <!-- body -->
         <div class="container-fluid px-4">
         <div><H2>Liste des promotions</H2></div>
         <!-- table -->
         <div class="row my-5">
-            <form class="promotion-form">
-                <div class="promotionform">
-                    <div>
-                        <input name="promotion" class="promotion" type="text" placeholder="promotion">
-                    </div>
-                    
-                    <div>
-                        <input name="chefrayon" class="chefrayon" id type="text" placeholder="chef rayon">
-                    </div>
-                    <div>
-                        <input name="date" class="date" type="text" placeholder="date">
-                        <input type="hidden" name="id" id="id" >
-                    </div>
-                    
-                    
-                </div>
-                <div class='promotionbutton'>
-                    <button  onclick="insertpromotion()" class="btn btn-primary">Enregistrer</button>
-                    
-                </div>
-               
-            </form>
+            
             <div class="col">
                 <table class="table bg-white rounded shadow-sm  table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">promotion</th>
-                            <th scope="col">chef rayon</th>
-                            <th scope="col">date </th>
+                            <th scope="col">Promotion</th>
+                            <th scope="col">Chef rayon</th>
+                            <th scope="col">Date </th>
                             <th scope="col">status</th>
+                            <th scope="col">Validation</th>
                         
                         </tr>
                     </thead>
@@ -116,9 +81,10 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script src="../public/promotion.js"></script>
-    <script src="../../public/admin_center/promotion.js"></script>
-    <script src="../../public/auth/AcAuth.js"></script>
+    <!-- <script src="../public/promotion.js"></script> -->
+    <!-- <script src="../../public/admin_center/promotion.js"></script> -->
+    <script src="../../public/promotion/filtredpromo.js"></script>
+    <script src="../../public/auth/Rayonlogin.js"> </script>
 </body>
 
 </html>

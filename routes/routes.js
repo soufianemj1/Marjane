@@ -4,6 +4,8 @@ module.exports = (app) => {
   const RAdminController = require("../api/Controllers/RAdminController");
   const Admin = require("../api/Controllers/AdminAuthController");
   const {adminmiddleware} = require("../middleware/middleware");
+  const {CaAdminmiddleware} = require("../middleware/middleware")
+  const {Rayonmiddleware} = require("../middleware/middleware")
 
 
   // admin 
@@ -13,7 +15,7 @@ module.exports = (app) => {
   app.get("/promotion", promotionController.getAllPromotions);
   app.post("/promotion", promotionController.createPromotion);
   app.get("/promotion/:id", promotionController.getPromotionById);
-  app.put("/updatePromo/:id", promotionController.updatePromotion);
+  app.put("/updatePromo/:id", promotionController.confirmPromotion);
   app.delete("/deletePromo/:id", promotionController.deletePromotion);
 
   // centerAdmin route
@@ -56,13 +58,27 @@ module.exports = (app) => {
   })
 
   // admin center view
-  app.get("/chefrayonadmin",(req,res)=>{
+  app.get("/aclogin",(req,res)=>{
+    res.render("aclogin")
+  })
+  app.get("/chefrayonadmin",CaAdminmiddleware,(req,res)=>{
     res.render("admin_center/chefrayon")
   })
   
-  app.get("/adminpromotion",(req,res)=>{
+  app.get("/adminpromotion",CaAdminmiddleware,(req,res)=>{
     res.render("admin_center/promotionadmin")
   })
+
+
+  //chef rayon view
+
+  app.get("/promotionrayon",Rayonmiddleware,(req,res)=>{
+    res.render("chef_rayon/promotion_chef_rayon")
+  })
+  app.get("/rayonlogin",(req,res)=>{
+    res.render("rayonlogin")
+  })
+
 
 
 };

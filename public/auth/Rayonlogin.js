@@ -1,4 +1,5 @@
-// admin general
+
+
 login=()=>{
     const admindata = {
         email: document.querySelector('.username').value,
@@ -6,18 +7,15 @@ login=()=>{
      
     }
     axios
-    .post('http://localhost:8082/login', admindata)
+    .post('http://localhost:8082/login/RA', admindata)
     .then(res=>{document.cookie = "token =" + (res.data)
-    window.location.href = "dashboard"
+    window.location.href = "promotionrayon"
 })
     .catch(err=>console.log(err))
 
     
 
 }
-
-
-
 
 logout =()=>{
    

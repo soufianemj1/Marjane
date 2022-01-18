@@ -1,9 +1,9 @@
-:root {
-  --main-bg-color: #009d63;
-  --main-text-color: #009d63;
+/* :root {
+  --main-bg-color: #00259d;
+  --main-text-color: #5a7e71;
   --second-text-color: #bbbec5;
   --second-bg-color: #c1efde;
-}
+} */
 
 .primary-text {
   color: var(--main-text-color);
@@ -27,14 +27,7 @@
 
 #wrapper {
   overflow-x: hidden;
-  background-image: linear-gradient(
-    to right,
-    #baf3d7,
-    #c2f5de,
-    #cbf7e4,
-    #d4f8ea,
-    #ddfaef
-  );
+  background-color: #0139759f;
 }
 
 #sidebar-wrapper {
@@ -91,11 +84,11 @@
 }
 .ACform input{
 border-style: none;
-border-bottom: 2px solid #009d63;
+border-bottom: 2px solid #00189d;
 padding: 8px;
 border-radius: 5px;
 }
-.rayonform{
+.Rayonform{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,14 +99,36 @@ border-radius: 5px;
   text-align: center;
   margin-top: 30px;
 }
-.rayonform input{
+.Rayonform input{
 border-style: none;
-border-bottom: 2px solid #009d63;
+border-bottom: 2px solid #00189d;
 padding: 8px;
 border-radius: 5px;
 }
 .updatebtndiv{
   text-align: center;
+}
+
+.promotionform{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+.rayonbutton{
+  text-align: center;
+  margin-top: 30px;
+}
+.promotionform input{
+border-style: none;
+border-bottom: 2px solid #00189d;
+padding: 8px;
+border-radius: 5px;
+}
+.promotionbutton{
+  text-align: center;
+  margin-top: 30px;
 }
 @media (min-width: 768px) {
   

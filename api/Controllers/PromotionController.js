@@ -26,39 +26,22 @@ const getPromotionById = async (req, res) => {
 };
 
 const createPromotion = async (req, res) => {
-  try {
-    // const product = await Product.getProductById(req.body.id_product);
+ 
+try{
+  const {promotion,id_chef_rayon,date_promotion,status} = req.body;
+  const promotioninsert = await Promotion.create({
+    promotion,
+    id_chef_rayon,
+    date_promotion,
+    // status
+  });
+  
+  res.json(promotioninsert);
+}
+catch(err){
+console.log(err);
+}
 
-    const rayon = await Rayon.getRayonById(req.body.id_rayon);
-
-    if (parseInt(req.body.promotion) <= 50) {
-      if (rayon[0].nom == "multimedia" && req.body.promotion <= 20) {
-        req.body.loyalty_points = (req.body.promotion / 5) * 50;
-        await Promotion.create(req.body);
-        res.json({
-          message: `promotion created for multimedia rayon`,
-        });
-      } else if (
-        rayon[0].nom == "electronic" ||
-        rayon[0].nom == "alimentation"
-      ) {
-        req.body.loyalty_points = (req.body.promotion / 5) * 50;
-        await Promotion.create(req.body);
-        res.json({
-          message: `promotion created `,
-        });
-      }
-      res.json({
-        message: "promotion not created",
-      });
-    }
-
-    res.json({
-      message: "Promotion Not Created",
-    });
-  } catch (error) {
-    res.json({ message: error.message });
-  }
 };
 
 const updatePromotion = async (req, res) => {
@@ -105,6 +88,17 @@ const updatePromotion = async (req, res) => {
     res.json({ message: error.message });
   }
 };
+const confirmPromotion = async(req,res)=>{
+  try{
+    await Promotion.update(req.body, req.params.id);
+    res.json({
+      message: "well updated",
+    });
+
+  }catch(error){
+   res.json({ message: error.message})
+  }
+}
 
 const deletePromotion = async (req, res) => {
   try {
@@ -123,4 +117,5 @@ module.exports = {
   getPromotionById,
   deletePromotion,
   updatePromotion,
+  confirmPromotion
 };

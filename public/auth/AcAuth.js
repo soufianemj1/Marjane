@@ -1,4 +1,7 @@
-// admin general
+
+
+
+// center admin general
 login=()=>{
     const admindata = {
         email: document.querySelector('.username').value,
@@ -6,19 +9,14 @@ login=()=>{
      
     }
     axios
-    .post('http://localhost:8082/login', admindata)
+    .post('http://localhost:8082/login/CA', admindata)
     .then(res=>{document.cookie = "token =" + (res.data)
-    window.location.href = "dashboard"
-})
+    window.location.href = "chefrayonadmin"})
     .catch(err=>console.log(err))
 
     
 
 }
-
-
-
-
 logout =()=>{
    
     const cookies = document.cookie.split(";");

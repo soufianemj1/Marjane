@@ -41,25 +41,9 @@ const createAdminRayon = async (req, res) => {
       res.status(400).send("All inputs are required");
     }
 
-    // check if user already exist
-    // Validate if user exist in our database
-    const Admins = await RayonAdmin.getAll();
+    
 
-    const oldAdmin = Admins.find((admin) => admin.email == email);
-
-    if (oldAdmin) {
-      return res.status(409).send("User Already Exist. Please Login");
-    }
-
-    // const token = jwt.sign(
-    //   {
-    //     email,
-    //   },
-    //   `${process.env.JWT_SECRET_KEY}`,
-    //   {
-    //     expiresIn: "2h",
-    //   }
-    // );
+    
     // Create user in our database
     const admin = await RayonAdmin.createRayonAdmin({
       firstName,
@@ -153,6 +137,7 @@ const login = async (req, res) => {
       const RAtoken = jwt.sign(
         {
           id: RAdmin.id,
+          role:'rayon'
         },
         `${process.env.JWT_SECRET_KEY}`,
         {
@@ -160,14 +145,14 @@ const login = async (req, res) => {
         }
       );
 
-      const { firstName, lastName, email, rayon, password, token } = RAdmin;
+      // const { firstName, lastName, email, rayon, password, token } = RAdmin;
 
       // save the new token
-      RAdmin.token = RAtoken;
+      // RAdmin.token = RAtoken;
 
-      await RayonAdmin.update(RAdmin, RAdmin.id);
+      // await RayonAdmin.update(RAdmin, RAdmin.id);
 
-      res.status(200).json(`welcome ${hours}`);
+      res.status(200).json(RAtoken);
     }
     res.status(400).send("Invalid Credentials");
     // create token

@@ -127,19 +127,19 @@ const login = async (req, res) => {
 
     if (CAdmin) {
       const CToken = jwt.sign(
-        { id: CAdmin.id },
+        { id: CAdmin.id , role:'Cadmin' },
         `${process.env.JWT_SECRET_KEY}`,
         {
           expiresIn: "2h",
         }
       );
 
-      const { firstName, lastName, email, password, token } = CAdmin;
-      CAdmin.token = CToken;
-      await CenterAdmin.update(CAdmin, CAdmin.id);
+      // const { firstName, lastName, email, password } = CAdmin;
+      // CAdmin.token = CToken;
+      // await CenterAdmin.update(CAdmin, CAdmin.id);
       // res.cookie("centerAdmin", true, { maxAge: 1 });
 
-      res.status(200).json({ message: "logged in " });
+      res.status(200).json(CToken);
     }
     res.status(400).send("Invalid Credentials");
     // create token

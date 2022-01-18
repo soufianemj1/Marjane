@@ -14,6 +14,14 @@ class Auth {
       token: token,
     });
   }
+  static findAllCaAdmins = () => {
+    return new Promise((resolve, reject) => {
+      con.query(`SELECT * FROM admin_center`, (err, result) => {
+        // if (err) throw err;
+        resolve(result);
+      });
+    });
+  };
 }
 
 module.exports = Auth;

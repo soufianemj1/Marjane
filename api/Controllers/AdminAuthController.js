@@ -2,43 +2,36 @@ const Auth = require("../Models/Auth");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../../utils/mail");
 
-const EmailLogin = async (req, res) => {
-  try {
-    const Admins = await Auth.findAllAdmins();
+// const EmailLogin = async (req, res) => {
+//   try {
+//     const Admins = await Auth.findAllAdmins();
 
-    const { email, password } = req.body;
+//     const { email, password } = req.body;
 
-    // validate user creds
-    if (!(email && password)) {
-      res.status(400).send("All input is required");
-    }
+//     // validate user creds
+//     if (!(email && password)) {
+//       res.status(400).send("All input is required");
+//     }
 
-    // validate if user exist in our database
-    const CAdmin = Admins.find((admin) => admin.email == req.body.email);
+//     // validate if user exist in our database
+//     const CAdmin = Admins.find((admin) => admin.email == req.body.email);
 
-    if (CAdmin) {
-      await sendMail.sendMail(email, CAdmin.password);
-      res.json({ message: "Email has been send with your password" });
-    }
+//     if (CAdmin) {
+//       await sendMail.sendMail(email, CAdmin.password);
+//       res.json({ message: "Email has been send with your password" });
+//     }
 
-    // create token
-  } catch (error) {
-    res.json({ message: error.message });
-  }
-};
+    
+//   } catch (error) {
+//     res.json({ message: error.message });
+//   }
+// };
 
 const login = async (req, res) => {
   try {
     const Admins = await Auth.findAllAdmins();
 
     const { email, password } = req.body;
-    console.log(req.body);
-
-    // validate user creds
-    if (!(email && password)) {
-      res.status(400).send("All input is required");
-    }
-
     // validate if user exist in our database
     const Admin = Admins.find(
       (admin) =>
@@ -64,6 +57,8 @@ const login = async (req, res) => {
   }
 };
 
+
+
 const UpdatePasswordLogin = async (req, res) => {
   try {
     const Admins = await Auth.findAllCenterAdmins();
@@ -74,7 +69,6 @@ const UpdatePasswordLogin = async (req, res) => {
     if (!(email && password)) {
       res.status(400).send("All input is required");
     }
-
     // validate if user exist in our database
     const CAdmin = Admins.find((admin) => admin.email == req.body.email);
 
@@ -91,6 +85,5 @@ const UpdatePasswordLogin = async (req, res) => {
 
 module.exports = {
   login,
-  EmailLogin,
   UpdatePasswordLogin,
 };
