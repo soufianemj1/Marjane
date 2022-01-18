@@ -4,6 +4,9 @@
   --second-text-color: #bbbec5;
   --second-bg-color: #c1efde;
 } */
+h2 {
+  color: white;
+}
 
 .primary-text {
   color: var(--main-text-color);
@@ -27,7 +30,7 @@
 
 #wrapper {
   overflow-x: hidden;
-  background-color: #0139759f;
+  background-color: #0055a6;
 }
 
 #sidebar-wrapper {
@@ -58,6 +61,7 @@
 
 #menu-toggle {
   cursor: pointer;
+  color: white;
 }
 
 .list-group-item {

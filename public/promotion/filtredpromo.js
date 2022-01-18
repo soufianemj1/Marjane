@@ -2,13 +2,13 @@
 const time = new Date();
 let hour = time.getHours();
 console.log(hour);
-if(8 <= hour <12){
+if(hour>=8 && hour <12){
 
     axios
 .get('http://localhost:8082/promotion')
 .then(res => res.data.forEach(element => {
     // hide validated ones
-    if(element.status != "Validated"){
+    // if(element.status != "Validated"){
     document.getElementById('Promotiondata').innerHTML += `
     <tr>
       
@@ -17,19 +17,22 @@ if(8 <= hour <12){
      <td>${element.date_promotion} <input id="date" name="date" type="hidden" value="${element.date_promotion}">
      <input id="promoId" name="promoId" type="hidden" value="${element.id}"></td>
      <td>${element.status}</td>  
-     <td><button onclick="validatepromo()" type="button" class="btn btn-light">Accept</button></td>
+     <td><button onclick="validatepromo(${element.id})" type="button" class="btn btn-light">Accept</button></td>
      
      
      
      </tr>
     `
-    }
+    // }
 }))
+}else{
+    document.getElementById('Promotiondata').innerHTML = "<h1>You can't validate promotion after 12pm</h1>"
 }
 
 
-validatepromo =()=>{
-    const id = document.getElementById('promoId').value
+
+validatepromo =(id)=>{
+    // const id = document.getElementById('promoId').value
     const promodata = {
        promotion: document.getElementById('promotion').value,
        id_chef_rayon: document.getElementById('chefrayon').value,
